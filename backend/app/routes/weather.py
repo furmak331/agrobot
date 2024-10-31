@@ -5,7 +5,7 @@ from app.utils.exceptions import WeatherAPIException
 weather_bp = Blueprint('weather', __name__)
 weather_service = WeatherService()
 
-@weather_bp.route('/current/<district>', methods=['GET'])
+@weather_bp.route('/current/<srinagar>', methods=['GET'])
 def get_weather(district):
     try:
         weather_data = weather_service.get_weather_by_district(district)
