@@ -4,3 +4,6 @@ flask-sqlalchemy==2.5.1
 python-dotenv==0.19.0
 requests==2.26.0
 psycopg2-binary==2.9.1
+fastapi==0.68.0
+uvicorn==0.15.0
+pydantic==1.8.2
