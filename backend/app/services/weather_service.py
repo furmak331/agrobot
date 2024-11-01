@@ -5,7 +5,7 @@ from app.utils.exceptions import WeatherAPIException
 
 class WeatherService:
     def __init__(self):
-        self.api_key = current_app.config['5fef1ba8039e2fae4135fd26b0a7912']
+        self.api_key = current_app.config['api key here T_T']
         self.base_url = "http://api.openweathermap.org/data/2.OPENWEATHER_API_KEY5"
         
         # Kashmir districts with their coordinates
