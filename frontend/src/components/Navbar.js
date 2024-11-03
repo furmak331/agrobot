@@ -10,6 +10,9 @@ function Navbar() {
           AgroBot
         </Typography>
         <Button color="inherit" component={Link} to="/">Home</Button>
+        <Button color="inherit" component={Link} to="/pest-detection">
+          Pest Detection
+        </Button>
         {/* Add more navigation buttons as needed */}
       </Toolbar>
     </AppBar>
