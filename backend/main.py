@@ -1,6 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from app.models.crop_recommendation import CropRecommendationRequest, CropRecommendationResponse
+from app.services.pest_detection_service import PestDetectionService
+from app.models.pest_detection import PestDetectionResponse
 
 app = FastAPI()
 
@@ -75,3 +77,14 @@ async def recommend_crops(request: CropRecommendationRequest):
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+pest_service = PestDetectionService()
+
+@app.post("/api/detect-pest", response_model=PestDetectionResponse)
+async def detect_pest(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        result = pest_service.detect_pest(contents)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
