@@ -6,13 +6,18 @@ import os
 from dotenv import load_dotenv
 import time
 
+# Load environment variables
 load_dotenv()
 
 class PestDetectionService:
     def __init__(self):
-        # Using a specific plant disease detection model
+        # Get API key from environment variable
+        api_key = os.getenv('HUGGING_FACE_API_KEY')
+        if not api_key:
+            raise ValueError("HUGGING_FACE_API_KEY not found in environment variables")
+            
         self.api_url = "https://api-inference.huggingface.co/models/nielsr/convnext-tiny-224-plant-disease"
-        self.headers = {"Authorization": "Bearer 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"}
+        self.headers = {"Authorization": f"Bearer {api_key}"}
         
         self.pest_database = {
             "healthy": {
