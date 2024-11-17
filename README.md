@@ -3,7 +3,7 @@
 
 # **Agro Bot**
 
-Agro Bot is an AI-driven advisory chatbot designed to assist farmers in the Kashmir region with real-time information on crop choices, weather updates, pest and disease management, and market prices. The bot aims to bridge the gap in accessible agricultural knowledge, providing guidance in English, Urdu, and Kashmiri.
+Agro Bot is an AI-driven advisory chatbot designed to assist farmers in the Kanyashmir region with real-time information on crop choices, weather updates, pest and disease management, and market prices. The bot aims to bridge the gap in accessible agricultural knowledge, providing guidance in several languages.
 
 ---
 
