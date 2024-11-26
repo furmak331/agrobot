@@ -1,27 +1,23 @@
-module ALU (
-    input [7:0] A,       // 8-bit input A
-    input [7:0] B,       // 8-bit input B
-    input [2:0] OpCode,  // 3-bit control signal
-    output reg [7:0] Result, // 8-bit result
-    output reg Zero       // Zero flag (1 if result is 0)
+module alu (
+input [7:0] A, // 8-bit input A
+input [7:0] B, // 8-bit input B
+input [2:0] Opcode, // 3-bit opcode for selecting the operation
+output reg [7:0] Result, // 8-bit output for the result
+output reg Zero // Zero flag (1 if result is zero)
 );
-
-    always @(*) begin
-        // Perform operation based on OpCode
-        case (OpCode)
-            3'b000: Result = A + B;            // Add
-            3'b001: Result = A - B;            // Subtract
-            3'b010: Result = A & B;            // AND
-            3'b011: Result = A | B;            // OR
-            3'b100: Result = A ^ B;            // XOR
-            3'b101: Result = ~(A | B);         // NOR
-            default: Result = 8'b00000000;     // Default to 0 (if OpCode is invalid)
-        endcase
-        
-        // Set Zero flag if all bits of Result are 0
-        Zero = (Result == 8'b00000000);  // Zero flag will be 1 if Result is zero
-    end
-
+always @(*) begin
+case (Opcode)
+3'b000: Result = A + B; // Add
+3'b001: Result = A - B; // Subtract
+3'b010: Result = A & B; // AND
+3'b011: Result = A | B; // OR
+3'b100: Result = A ^ B; // XOR
+3'b101: Result = ~(A | B); // NOR
+default: Result = 8'b00000000; // Default to 0 if invalid opcode
+endcase
+// Set the Zero flag to 1 if the result is zero
+Zero = (Result == 8'b00000000) ? 1 : 0;
+end
 endmodule
 
 module ALU_tb;
